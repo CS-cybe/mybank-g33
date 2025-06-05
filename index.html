@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Bank - Adaptive Authentication System</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.9/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Helvetica', sans-serif; }
+    .bg-dark-blue { background-color: #1E3A8A; }
+    .text-light-blue { color: #60A5FA; }
+
+    /* Styling for the images */
+    .img-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .uniform-image {
+      height: 300px; /* Fixed height */
+      width: auto; /* Adjust the width automatically to maintain aspect ratio */
+      object-fit: cover; /* Cover the image area without distorting */
+      max-width: 100%; /* Ensure it doesn't exceed container width */
+      border-radius: 0.5rem; /* Rounded corners */
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const Navbar = () => (
+      <nav className="bg-dark-blue text-white p-4 sticky top-0 z-10 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">My Bank</h1>
+          <div className="space-x-4">
+            {['Home', 'About', 'Methodology', 'Implementation', 'Evaluation', 'Team', 'Contact'].map(item => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-light-blue">{item}</a>
+            ))}
+          </div>
+        </div>
+      </nav>
+    );
+
+    const Home = () => (
+      <section id="home" className="bg-dark-blue text-white py-20 text-center">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold mb-4">My Bank: Secure Authentication</h2>
+          <p className="text-lg mb-6">Protecting banking data with an adaptive authentication system to counter insider threats.</p>
+          <a href="#about" className="bg-light-blue text-white px-6 py-3 rounded-full hover:bg-blue-500">Explore Now</a>
+        </div>
+      </section>
+    );
+
+    const About = () => (
+      <section id="about" className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-dark-blue mb-6">About My Bank</h2>
+          <p className="text-lg mb-4">
+            My Bank addresses the critical issue of password sharing among bank employees, a practice that compromises data integrity and costs organizations $11.45M on average per insider incident (IBM Security, 2022). Our adaptive authentication system integrates Multi-Factor Authentication (MFA) and user behavior analysis to mitigate insider threats.
+          </p>
+          <p className="text-lg">
+            Developed at the University of Sri Jayawardanepura, Faculty of Technology, My Bank ensures robust security for sensitive banking data, aligning with regulations like GDPR and PSD2.
+          </p>
+        </div>
+      </section>
+    );
+
+    const Methodology = () => (
+      <section id="methodology" className="bg-gray-200 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-dark-blue mb-6">Methodology</h2>
+          <p className="text-lg mb-4">
+            My Bank's adaptive authentication system combines Multi-Factor Authentication (MFA) with real-time behavior analysis, using:
+          </p>
+          <ul className="list-disc list-inside text-lg mb-4">
+            <li><strong>MFA</strong>: Username/password, 6-digit OTP via email, two security questions, and behavioral verification.</li>
+            <li><strong>Adaptive Authentication</strong>: Machine learning (RandomForestClassifier) monitors user behavior (e.g., mouse speed, typing patterns).</li>
+            <li><strong>Technologies</strong>: Python 3.13.3, Tkinter for GUI, smtplib for OTP delivery, pynput for behavioral data, scikit-learn for ML.</li>
+          </ul>
+          <p className="text-lg">
+            Data collection included employee questionnaires, behavioral metrics (7 features, e.g., Mouse_Speed, Typing_Speed), and mock banking data for prototyping.
+          </p>
+        </div>
+      </section>
+    );
+
+    const Implementation = () => (
+      <section id="implementation" className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-dark-blue mb-6">Implementation</h2>
+          <p className="text-lg mb-4">
+            My Bank was implemented as a Python-based desktop application using Tkinter, featuring:
+          </p>
+          <ul className="list-disc list-inside text-lg mb-4">
+            <li><strong>Authentication Module</strong>: Validates credentials, sends OTPs, verifies security questions, and analyzes behavior.</li>
+            <li><strong>Dashboard Module</strong>: Provides role-based access (Admin: Dinusha, Teller: Sanjaya) to banking functions.</li>
+            <li><strong>Banking Modules</strong>: Simulates customer management, accounts, loans, transactions, and more with mock data.</li>
+          </ul>
+          <p className="text-lg mb-4">Sample code for login validation:</p>
+          <pre className="bg-gray-800 text-white p-4 rounded">
+{`def validate_login(self):
+    username = self.entry_username.get()
+    password = self.entry_password.get()
+    if username in self.users and self.users[username]["password"] == password:
+        self.current_username = username
+        self.send_otp()
+    else:
+        messagebox.showerror("Error", "Invalid username or password")`}
+          </pre>
+          <p className="text-lg">Key interfaces (from thesis Figures 10, 11, 13):</p>
+          <div className="img-container">
+            <figure className="text-center">
+              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\loginterface.png"alt="Login Interface" className="uniform-image" />
+              <figcaption className="mt-2 text-sm text-gray-600">Figure 10: Login Interface</figcaption>
+            </figure>
+            <figure className="text-center">
+              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\otp verification.png" alt="OTP Verification" className="uniform-image" />
+              <figcaption className="mt-2 text-sm text-gray-600">Figure 11: OTP Verification</figcaption>
+            </figure>
+            <figure className="text-center">
+              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\dashboard.jpg" className="uniform-image" />
+              <figcaption className="mt-2 text-sm text-gray-600">Figure 13: Dashboard</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Evaluation = () => {
+      useEffect(() => {
+        const accuracyCtx = document.getElementById('accuracyChart').getContext('2d');
+        new Chart(accuracyCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Dinusha', 'Sanjaya'],
+            datasets: [{
+              label: 'Behavior Analysis Accuracy (%)',
+              data: [96, 92],
+              backgroundColor: ['#60A5FA', '#1E3A8A'],
+            }]
+          },
+          options: { scales: { y: { beginAtZero: true, max: 100 } } }
+        });
+
+        const usabilityCtx = document.getElementById('usabilityChart').getContext('2d');
+        new Chart(usabilityCtx, {
+          type: 'bar',
+          data: {
+            labels: ['Ease of Use', 'Satisfaction'],
+            datasets: [{
+              label: 'Usability Scores (out of 5)',
+              data: [4.2, 4.3],
+              backgroundColor: ['#60A5FA', '#1E3A8A'],
+            }]
+          },
+          options: { scales: { y: { beginAtZero: true, max: 5 } } }
+        });
+      }, []);
+
+      return (
+        <section id="evaluation" className="bg-gray-200 py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-dark-blue mb-6">Evaluation & Results</h2>
+            <h3 className="text-2xl font-semibold text-dark-blue mb-4">Key Results</h3>
+            <ul className="list-disc list-inside text-lg mb-4">
+              <li><strong>Authentication Success Rate</strong>: 96% (48/50 attempts successful).</li>
+              <li><strong>Behavior Analysis Accuracy</strong>: 96% for Dinusha, 92% for Sanjaya due to variable typing patterns.</li>
+              <li><strong>False Positive Rate</strong>: 2% (1/50 unauthorized attempts granted).</li>
+              <li><strong>False Negative Rate</strong>: 6% (3/50 authorized attempts denied, all for Sanjaya).</li>
+              <li><strong>Usability</strong>: 4.2/5 for ease of use, 4.3/5 for satisfaction.</li>
+              <li><strong>Performance</strong>: Response times &lt;1.2 seconds per step, memory usage 150 MB.</li>
+            </ul>
+            <h3 className="text-2xl font-semibold text-dark-blue mb-4">Visualizations</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-xl font-semibold mb-2">Behavior Analysis Accuracy</h4>
+                <canvas id="accuracyChart" className="max-w-full"></canvas>
+              </div>
+              <div>
+                <h4 className="text-xl font-semibold mb-2">Usability Scores</h4>
+                <canvas id="usabilityChart" className="max-w-full"></canvas>
+              </div>
+            </div>
+            <p className="text-lg mt-4">
+              My Bank's evaluation confirms its effectiveness in preventing unauthorized access and maintaining usability, though behavior analysis for users like Sanjaya requires further training to reduce false negatives.
+            </p>
+          </div>
+        </section>
+      );
+    };
+
+    const Team = () => (
+      <section id="team" className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-dark-blue mb-6">My Bank Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold">G.V.D.Pasan Kavindya Vithanage</h3>
+              <p className="text-lg">ICT/20/951 - System design, behavior analysis.</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold">K.W Sanjaya Prasad</h3>
+              <p className="text-lg">ICT/20/905 - Implementation, testing.</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold">B.A.D.P.Kumara</h3>
+              <p className="text-lg">ICT/20/873 - Evaluation, documentation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Contact = () => (
+      <section id="contact" className="bg-dark-blue text-white py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Contact My Bank</h2>
+          <p className="text-lg mb-4">Learn more about how My Bank can secure your institution!</p>
+          <div className="max-w-md mx-auto">
+            <input type="text" placeholder="Name" className="w-full p-2 mb-4 rounded text-black" />
+            <input type="email" placeholder="Email" className="w-full p-2 mb-4 rounded text-black" />
+            <textarea placeholder="Message" className="w-full p-2 mb-4 rounded text-black" rows="4"></textarea>
+            <button className="bg-light-blue text-white px-6 py-2 rounded-full hover:bg-blue-500">Send</button>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Footer = () => (
+      <footer className="bg-gray-800 text-white py-4 text-center">
+        <p>© 2025 University of Sri Jayawardanepura, Faculty of Technology. All rights reserved.</p>
+      </footer>
+    );
+
+    const App = () => (
+      <div>
+        <Navbar />
+        <Home />
+        <About />
+        <Methodology />
+        <Implementation />
+        <Evaluation />
+        <Team />
+        <Contact />
+        <Footer />
+      </div>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
