@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +11,17 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { font-family: 'Helvetica', sans-serif; }
-    .bg-dark-blue { background-color: #1E3A8A; }
-    .text-light-blue { color: #60A5FA; }
+    body {
+      font-family: 'Helvetica', sans-serif;
+    }
+
+    .bg-dark-blue {
+      background-color: #1E3A8A;
+    }
+
+    .text-light-blue {
+      color: #60A5FA;
+    }
 
     /* Styling for the images */
     .img-container {
@@ -22,14 +31,20 @@
     }
 
     .uniform-image {
-      height: 300px; /* Fixed height */
-      width: auto; /* Adjust the width automatically to maintain aspect ratio */
-      object-fit: cover; /* Cover the image area without distorting */
-      max-width: 100%; /* Ensure it doesn't exceed container width */
-      border-radius: 0.5rem; /* Rounded corners */
+      height: 300px;
+      /* Fixed height */
+      width: auto;
+      /* Adjust the width automatically to maintain aspect ratio */
+      object-fit: cover;
+      /* Cover the image area without distorting */
+      max-width: 100%;
+      /* Ensure it doesn't exceed container width */
+      border-radius: 0.5rem;
+      /* Rounded corners */
     }
   </style>
 </head>
+
 <body class="bg-gray-100">
   <div id="root"></div>
   <script type="text/babel">
@@ -105,7 +120,7 @@
           </ul>
           <p className="text-lg mb-4">Sample code for login validation:</p>
           <pre className="bg-gray-800 text-white p-4 rounded">
-{`def validate_login(self):
+            {`def validate_login(self):
     username = self.entry_username.get()
     password = self.entry_password.get()
     if username in self.users and self.users[username]["password"] == password:
@@ -117,15 +132,15 @@
           <p className="text-lg">Key interfaces (from thesis Figures 10, 11, 13):</p>
           <div className="img-container">
             <figure className="text-center">
-              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\loginterface.png"alt="Login Interface" className="uniform-image" />
+              <img src=".\loginterface.png" alt="Login Interface" className="uniform-image" />
               <figcaption className="mt-2 text-sm text-gray-600">Figure 10: Login Interface</figcaption>
             </figure>
             <figure className="text-center">
-              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\otp verification.png" alt="OTP Verification" className="uniform-image" />
+              <img src=".\otp verification.png" alt="OTP Verification" className="uniform-image" />
               <figcaption className="mt-2 text-sm text-gray-600">Figure 11: OTP Verification</figcaption>
             </figure>
             <figure className="text-center">
-              <img src="C:\Users\SANJA\OneDrive\Documents\Final Research\New folder\dashboard.jpg" className="uniform-image" />
+              <img src=".\dashboard.jpg" className="uniform-image" />
               <figcaption className="mt-2 text-sm text-gray-600">Figure 13: Dashboard</figcaption>
             </figure>
           </div>
@@ -256,4 +271,5 @@
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
+
 </html>
